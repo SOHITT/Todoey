@@ -10,7 +10,7 @@ import UIKit
 
 class ListViewController: UITableViewController {
 
-    let fruitsName = ["apple","bnana","orange","gava","pomegarnate","gava","apple","bnana","orange","apple","bnana","orange","apple","bnana","orange","apple","bnana","orange","gava","pomegarnate","gava","apple","bnana","orange","apple","bnana","orange","apple","bnana","orange" ]
+    var fruitsName = ["apple","bnana","orange"]
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +41,34 @@ class ListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
+    @IBAction func addButtonAction(_ sender: Any) {
+        
+        
+        var textField = UITextField()
+        
+    let alert = UIAlertController(title: "ADD NEW TODOEY ITEM", message: "", preferredStyle: .alert)
+    
+    let action = UIAlertAction(title: "ADD ITEM", style: .default) { (action) in
+       // print(textField.text!)
+        self.fruitsName.append(textField.text!)
+        
+        self.tableView.reloadData()
+        
+        
+        
+        }
+        alert.addTextField { (alertTextField) in
+        
+        alertTextField.placeholder = "create new item"
+            textField = alertTextField
+        
+        
+    }
+    alert.addAction(action)
+    present(alert, animated: true, completion: nil )
+    
+    }
     
 }
+
 
